@@ -1,0 +1,24 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: frontend-app-prod
+  namespace: argocd
+spec:
+  project: default
+
+
+  source:
+    repoURL: git@github.com:Miqquelangel/argocd.git
+    targetRevision: HEAD
+    path: environments/prod/frontend-app
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: frontend
+
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+
+    automated:
+      selfHeal: true
+      prune: true

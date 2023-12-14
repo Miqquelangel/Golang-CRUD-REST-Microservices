@@ -1,0 +1,31 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: prod
+
+bases:
+  - ../../nginx
+
+commonLabels:
+  app: app
+  version: v1
+
+replicas:
+- name: nginx
+  count: 2
+
+namePrefix: prod-
+
+images:
+ - name: miqquel/miqquel-testing
+   newName: nginx
+   newTag: latest
+
+configMapGenerator:
+- name: nginx-config
+  files:
+  - configs/index.html
+
+patches:
+  - path: volumeMounts.yaml
+

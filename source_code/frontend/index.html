@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title>Login Page</title>
+   <style>
+       body {
+           font-family: Arial, sans-serif;
+           background-color: #f0f0f0;
+       }
+       .container {
+           width: 300px;
+           padding: 16px;
+           background-color: #fff;
+           margin: 0 auto;
+           margin-top: 100px;
+           border: 1px solid #ccc;
+           border-radius: 4px;
+       }
+       .container h2 {
+           text-align: center;
+           color: #333;
+       }
+       .container input[type=text], .container input[type=password] {
+           width: 100%;
+           padding: 12px 20px;
+           margin: 8px 0;
+           display: inline-block;
+           border: 1px solid #ccc;
+           box-sizing: border-box;
+       }
+       .container button {
+           background-color: #4CAF50;
+           color: white;
+           padding: 14px 20px;
+           margin: 8px 0;
+           border: none;
+           cursor: pointer;
+           width: 100%;
+       }
+       .container button:hover {
+           opacity: 0.8;
+       }
+   </style>
+</head>
+<body>
+   <div class="container">
+       <h2>Login</h2>
+       <label for="username"><b>Username</b></label>
+       <input type="text" placeholder="Enter Username" id="username" required>
+       <label for="password"><b>Password</b></label>
+       <input type="password" placeholder="Enter Password" id="password" required>
+       <button onclick="login()">Login</button>
+   </div>
+
+   <script>
+   function login() {
+       var username = document.getElementById('username').value;
+       var password = document.getElementById('password').value;
+       
+       var data = {
+           username: username,
+           password: password
+       };
+       fetch('http://10.211.55.26/login', {
+           method: 'POST',
+           mode: 'cors', // Add this line
+           // credentials: 'include', // Add this lin
+           headers: {
+               'Content-Type': 'application/json'
+           },
+           body: JSON.stringify(data),
+       })
+       .then(function(response) {
+           if (response.status === 201) {
+               document.body.style.backgroundColor = 'green';
+               // Send a POST request to http://10.211.55.26/home
+               var cookie = response.headers.get('X-Token');
+               fetch('http://10.211.55.26/status', {
+                  method: 'POST',
+                  mode: 'cors', // Add this line
+                  credentials: 'include', // Add this lin
+                  headers: {
+                      // 'Content-Type': 'application/json' + cookie,
+                      'Cookie': 'token=' + cookie
+                  },
+                  body: JSON.stringify(data),
+               })
+               .then(function(response) {
+                  if (response.status === 401) {
+                      document.body.style.backgroundColor = 'yellow';
+                  }
+               })
+               .catch(function(error) {
+                  console.error('Error:', error);
+               });
+           } else {
+               document.body.style.backgroundColor = 'red';
+               document.getElementById('errorMessage').style.display = 'block';
+           }
+       })
+       .catch(function(error) {
+           console.error('Error:', error);
+       });
+   }
+</script>
+</body>
+</html>
