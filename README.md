@@ -10,7 +10,7 @@ The API will provide 4 endpoints (“/login”, “/signup”, “/auth” and /
 
 2.- “/signup” endpoint, will offer POST and OPTIONS requests as the “/login” endpoint. The main difference is that the POST requests will insert the users data into the mongoDB (HTTP 201), as well as generate a JWT token for authentication to the “/auth” endpoint.
 
-3.- “/auth” endpoint, will offer POST and OPTIONS requests. The main function of this endpoint is to fetch if the JWT token is valid. If it is (HTTP 200), it will return a custom message like “Hello. $user authenticated”. If not, it will return a HTTP 401 unauthorized.
+3.- “/auth” endpoint, will offer POST and OPTIONS requests. The main function of this endpoint is to fetch if the JWT token is valid. If it is (HTTP 200), it will return a custom message like "Hello! User ($username) has been authenticated". If not, it will return a HTTP 401 unauthorized.
 
 4.- “/operate” endpoint, will offer GET, POST, PUT, DELETE and OPTIONS requests. This endpoint will be used to manipulate data from our database at will.
 
