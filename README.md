@@ -16,6 +16,6 @@ The API will provide 4 endpoints (“/login”, “/signup”, “/auth” and /
 
 As for the mongoDB database, only two databases with the following collections will be created:
 
-1.- DB “users”, collection “data”. The collection “data”, will store all the fields that are relevant to the user, in this case will be -> ‘username’, ‘email’, ‘password’ and ‘created_at’
+1.- DB “users”, collection “data”. The collection “data”, will store all the fields that are relevant to the user, in this case will be -> ‘username’ and ‘password’.
 
 2.- DB “logs”, collections “login”, “signup” and “auth”. Each collection will store information of every request to their corresponding endpoint. The information gathered will be as follows -> requestURI, httpStatus, source IP, Date, Header and Host.
