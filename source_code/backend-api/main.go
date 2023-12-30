@@ -10,6 +10,7 @@ import (
 	"time"
 	"Signup"
 	"Auth"
+	"Login"
 )
 
 func main() {	
@@ -18,10 +19,12 @@ func main() {
 	sm := http.NewServeMux()
 	signup := Signup.NewSignup(l)
 	auth := Auth.NewAuth(l)
+	login := Login.NewLogin(l)
 	sm.Handle("/signup", signup) // Path to the login for the frontend // Only accepts POST and OPTIONS requests
 	sm.Handle("/auth", auth) // Path to the login for the frontend // Only accepts POST and OPTIONS requests
+	sm.Handle("/login", login) // Path to the login for the frontend // Only accepts POST and OPTIONS requests
 	s := &http.Server{
-		Addr:         "10.211.55.26:80",
+		Addr:         "0.0.0.0:80",
 		Handler:      sm,
 		IdleTimeout:  120 * time.Second,
 		ReadTimeout:  1 * time.Second,
