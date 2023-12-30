@@ -12,8 +12,6 @@ The API will provide 4 endpoints (“/login”, “/signup”, “/auth” and /
 
 3.- “/auth” endpoint, will offer POST and OPTIONS requests. The main function of this endpoint is to fetch if the JWT token is valid. If it is (HTTP 200), it will return a custom message like "Hello! User ($username) has been authenticated". If not, it will return a HTTP 401 unauthorized.
 
-4.- “/operate” endpoint, will offer GET, POST, PUT, DELETE and OPTIONS requests. This endpoint will be used to manipulate data from our database at will.
-
 As for the mongoDB database, only two databases with the following collections will be created:
 
 1.- DB “users”, collection “data”. The collection “data”, will store all the fields that are relevant to the user, in this case will be -> ‘username’ and ‘password’.
