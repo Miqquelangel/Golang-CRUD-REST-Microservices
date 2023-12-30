@@ -8,7 +8,7 @@ spec:
 
 
   source:
-    repoURL: git@github.com:Miqquelangel/argocd.git
+    repoURL: <data>
     targetRevision: HEAD
     path: environments/dev/api-app
   destination:
