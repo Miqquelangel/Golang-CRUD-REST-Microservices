@@ -1,4 +1,4 @@
-# Microservices
+# Golang CRUD/REST API, Kubernetes microservices, JWT authentication.
 
 The purpose of this project is to create a CRUD API in Golang, whose source of data will be a MongoDB deployed through minikube. Once the API is created, it will be containerized and deployed into our minikube setup, providing us a basic CRUD microservice setup.
 
