@@ -12,6 +12,6 @@ spec:
    spec:
      containers:
        - name: api-backend
-         image: miqquel/miqquel-testing:api-v3
+         image: <data>
          ports:
            - containerPort: 80
