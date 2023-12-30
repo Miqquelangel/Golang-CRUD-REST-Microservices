@@ -15,9 +15,3 @@ replicas:
   count: 1
 
 namePrefix: dev-
-
-# images:
-#  - name: miqquel/miqquel-testing
-#    newName: miqquel/miqquel-testing
-#    newTag: api-backend
-
