@@ -4,7 +4,7 @@ The purpose of this project is to create a CRUD API in Golang, whose source of d
 
 In order to automate future releases of the API and to customize our setup, the microservices will be deployed through ArgoCD, using Kustomize. This project will not be focused on how to configure ArgoCD and Kustomize, however, the source code will be available under the 'argocd’ directory.
 
-The API will provide 4 endpoints (“/login”, “/signup”, “/auth” and /operate), which functions goes as follows:
+The API will provide 3 endpoints (“/login”, “/signup” and “/auth”), which functions goes as follows:
 
 1.- “/login” endpoint, will offer POST and OPTIONS requests. The POST requests will generate a JWT token (HTTP 200) that will be used as a source of truth to authenticate users into our “/auth” endpoint.
 
